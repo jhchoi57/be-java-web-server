@@ -16,13 +16,13 @@ public class LoginService {
 
     public static boolean isLogin(HttpSession session) {
         if (session == null) return false;
-        return session.getAttribute(session.getId()) != null;
+        return session.getAttribute("user") != null;
     }
 
     public boolean isLoginSuccess(LoginForm loginForm, HttpSession session) {
         User user = jdbcRepository.findUserById(loginForm.getUserId());
         boolean isSuccess = Objects.equals(user.getPassword(), loginForm.getPassword());
-        if (isSuccess) session.setAttribute(session.getId(), user);
+        if (isSuccess) session.setAttribute("user", user);
         return isSuccess;
     }
 

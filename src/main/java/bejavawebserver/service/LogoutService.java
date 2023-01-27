@@ -7,6 +7,6 @@ import javax.servlet.http.HttpSession;
 @Service
 public class LogoutService {
     public void removeSession(HttpSession session) {
-        session.removeAttribute(session.getId());
+        session.removeAttribute("user");
     }
 }
